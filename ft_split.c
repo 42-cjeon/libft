@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 12:37:23 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 14:17:59 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/10 19:04:44 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ char	**_get_empty_split_array(const char *str, char c)
 int	_fill_split_array(const char *str, char c, char **result)
 {
 	const char	*word;
-	int		len_str;
-	int		index;
+	int			len_str;
+	int			index;
 
 	index = 0;
 	len_str = 0;
