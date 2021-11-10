@@ -1,11 +1,23 @@
-#include "libc.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/10 19:05:03 by cjeon             #+#    #+#             */
+/*   Updated: 2021/11/10 19:05:27 by cjeon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *ft_strchr(const char *s, int c)
+#include "libft.h"
+
+char	*ft_strchr(const char *s, int c)
 {
-	char find_char;
+	char	find_char;
 
 	find_char = (char)c;
-	while(*s != '\0')
+	while (*s != '\0')
 	{
 		if (*s == find_char)
 			return ((char *)s);
