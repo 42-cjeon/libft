@@ -6,15 +6,15 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 16:06:02 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 16:07:27 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/10 18:43:20 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list *last;
+	t_list	*last;
 
 	last = ft_lstlast(*lst);
 	if (last == NULL)
