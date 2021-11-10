@@ -6,12 +6,11 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:06:53 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/09 23:30:54 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/10 18:59:11 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "libft.h"
 
 void ft_putchar_fd(char c, int fd)
 {
