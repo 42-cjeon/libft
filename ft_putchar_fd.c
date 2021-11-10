@@ -6,13 +6,13 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:06:53 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 18:59:11 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/10 19:00:14 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }
