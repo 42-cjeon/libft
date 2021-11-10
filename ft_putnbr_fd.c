@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:35:10 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 14:57:18 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/10 19:03:14 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char temp[12];
-	long long k;
-	int is_neg;
-	int i;
+	char		temp[11];
+	long long	k;
+	int			is_neg;
+	int			i;
 
 	k = n;
 	i = 10;
-	temp[11] = '\0';
 	is_neg = 0;
 	if (k < 0)
 	{
