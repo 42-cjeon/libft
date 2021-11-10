@@ -6,20 +6,20 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:09:28 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/09 23:47:55 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/10 19:14:27 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libc.h"
+#include "libft.h"
 
-char *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	char find_char;
-	const char *last_found;
+	char		find_char;
+	const char	*last_found;
 
 	find_char = (char)c;
 	last_found = NULL;
-	while(*s != '\0')
+	while (*s != '\0')
 	{
 		if (*s == find_char)
 			last_found = s;
