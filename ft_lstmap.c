@@ -6,16 +6,16 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 16:44:04 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 17:20:38 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/10 18:52:21 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *new_lst;
-	t_list *temp;
+	t_list	*new_lst;
+	t_list	*temp;
 
 	if (lst == NULL)
 		return (NULL);
