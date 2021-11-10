@@ -6,17 +6,17 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 14:19:06 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 14:02:22 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/10 19:17:50 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char *str;
-	size_t result_length;
+	char	*str;
+	size_t	result_length;
 
 	result_length = ft_strlen(s);
 	if (result_length <= start)
@@ -34,7 +34,7 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 	if (str == NULL)
 		return (NULL);
 	str[result_length] = '\0';
-	while(result_length--)
+	while (result_length--)
 		str[result_length] = s[result_length];
 	return (str);
 }
