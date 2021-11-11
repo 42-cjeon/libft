@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:02:56 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 17:33:10 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/11 13:46:30 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*allocated;
 
+	if (count == 0 || size == 0)
+		return (NULL);
 	allocated = malloc(count * size);
 	if (allocated == NULL)
 		return (NULL);
