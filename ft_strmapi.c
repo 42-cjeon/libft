@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:41:58 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 19:12:43 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/11 15:35:37 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	len;
 	unsigned int	i;
 	char			*str;
+	char			*ps;
 
-	len = ft_strlen(s);
+	len = (unsigned int)ft_strlen(s);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (str == NULL)
 		return (NULL);
 	i = 0;
-	while (i < len)
-	{
-		str[i] = f(i, s[i]);
-		i++;
-	}
-	str[len] = '\0';
-	return (str);
+	ps = (char *)s;
+	while (len--)
+		*str++ = f(i++, *ps++);
+	*str = '\0';
+	return (str - i);
 }
