@@ -6,11 +6,10 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:00:46 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 19:07:44 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/11 15:11:28 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
@@ -21,8 +20,5 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	i = 0;
 	len = ft_strlen(s);
 	while (i < len)
-	{
-		f(i, s + i);
-		i++;
-	}
+		f(i++, s++);
 }
