@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:00:46 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/11 15:11:28 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/11 15:40:48 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 
 	i = 0;
 	len = ft_strlen(s);
-	while (i < len)
+	while (len--)
 		f(i++, s++);
 }
