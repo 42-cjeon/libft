@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:12:49 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 19:12:09 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/11 15:24:50 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	length;
+	size_t	len;
 
-	length = 0;
+	len = 0;
 	while (*s != '\0')
 	{
 		s++;
-		length++;
+		len++;
 	}
-	return (length);
+	return (len);
 }
