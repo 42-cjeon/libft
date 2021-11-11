@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:06:40 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 18:57:09 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/11 14:42:26 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,17 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t		i;
-	char		*_dst;
-	const char	*_src;
+	char		*d;
+	const char	*s;
 
 	if ((size_t)dst < (size_t)src)
 		ft_memcpy(dst, src, len);
 	else if ((size_t)dst > (size_t)src)
 	{
-		i = 0;
-		_dst = (char *)dst + len - 1;
-		_src = (const char *)src + len - 1;
-		while (i < len)
-		{
-			*_dst = *_src;
-			_src--;
-			_dst--;
-			i++;
-		}
+		d = (char *)dst + len - 1;
+		s = (const char *)src + len - 1;
+		while (len--)
+			*d-- = *s--;
 	}
 	return (dst);
 }
