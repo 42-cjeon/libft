@@ -6,95 +6,98 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 12:37:23 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 19:04:44 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/13 00:16:37 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-int	_add_result(char **result, int index, const char *str, unsigned int n)
-{	
-	unsigned int	i;
-	char			target_char;
+static void	free_array(char **array, size_t max_index)
+{
+	while (max_index--)
+		free(array[max_index]);
+	free(array);
+}
 
-	i = 0;
-	target_char = *str;
-	result[index] = (char *)malloc(sizeof(char) * (n + 1));
-	if (result[index] == NULL)
-		return (0);
-	while (i < n - 1 && target_char)
+static int	append_array(char **array, size_t index,
+						const char *start, size_t len)
+{
+	char	*str;
+
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
 	{
-		result[index][i++] = target_char;
-		target_char = str[i];
+		free_array(array, index);
+		return (0);
 	}
-	while (i < n)
-		result[index][i++] = 0;
+	ft_strlcpy(str, start, len + 1);
+	array[index] = str;
 	return (1);
 }
 
-char	**_get_empty_split_array(const char *str, char c)
+static int	parse_string(char **array, const char *str, char c)
 {
-	int		i;
-	int		was_split_char;
-	int		length;
-	char	**array;
+	const char	*word_start;
+	size_t		word_len;
+	size_t		index;
 
-	length = 0;
+	index = 0;
+	while (*str == c)
+		str++;
+	while (*str != '\0')
+	{
+		word_start = str;
+		word_len = 0;
+		while (*str != c && *str != '\0')
+		{
+			word_len++;
+			str++;
+		}
+		if (!append_array(array, index, word_start, word_len))
+			return (0);
+		index++;
+		while (*str == c)
+			str++;
+	}
+	array[index] = NULL;
+	return (1);
+}
+
+static char	**get_empty_array(const char *str, char c)
+{
+	int		was_split_char;
+	char	**array;
+	size_t	arr_len;
+
+	arr_len = 0;
 	was_split_char = 1;
 	while (*str)
 	{
-		i = 0;
 		if (c == *str)
 			was_split_char = 1;
 		else
 		{
 			if (was_split_char)
-				length++;
+				arr_len++;
 			was_split_char = 0;
 		}
 		str++;
 	}
-	array = (char **)malloc(sizeof(char *) * (length + 1));
+	array = (char **)malloc(sizeof(char *) * (arr_len + 1));
 	if (array == NULL)
 		return (NULL);
-	array[length] = NULL;
 	return (array);
-}
-
-int	_fill_split_array(const char *str, char c, char **result)
-{
-	const char	*word;
-	int			len_str;
-	int			index;
-
-	index = 0;
-	len_str = 0;
-	while (*str)
-	{
-		if (*str == c)
-		{
-			if (len_str && !(_add_result(result, index++, word, len_str + 1)))
-				return (0);
-			len_str = 0;
-		}
-		else if (!len_str++)
-			word = str;
-		str++;
-	}
-	if (len_str && !(_add_result(result, index++, word, len_str + 1)))
-		return (0);
-	return (1);
 }
 
 char	**ft_split(const char *str, char c)
 {
-	char	**result;
+	char	**array_of_strings;
 
-	result = _get_empty_split_array(str, c);
-	if (result == NULL)
+	array_of_strings = get_empty_array(str, c);
+	if (array_of_strings == NULL)
 		return (NULL);
-	if (!(_fill_split_array(str, c, result)))
+	if (!parse_string(array_of_strings, str, c))
 		return (NULL);
-	return (result);
+	return (array_of_strings);
 }
