@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:12:13 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 19:10:11 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/11 15:23:13 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	dst_length;
+	size_t	dst_len;
 
-	dst_length = 0;
-	while (*dst != '\0' && dst_length < dstsize)
+	dst_len = 0;
+	while (*dst != '\0' && dst_len < dstsize)
 	{
 		dst++;
-		dst_length++;
+		dst_len++;
 	}
-	if (dst_length == dstsize)
-		return (dst_length + ft_strlen(src));
-	return (dst_length + ft_strlcpy(dst, src, dstsize - dst_length));
+	if (dst_len == dstsize)
+		return (dst_len + ft_strlen(src));
+	return (dst_len + ft_strlcpy(dst, src, dstsize - dst_len));
 }
