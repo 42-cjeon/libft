@@ -6,69 +6,47 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 13:43:04 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 18:39:08 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/14 00:23:32 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
-static void	copy_reversed(char *dst, const char *src, int n)
+static int	convert_to_str(char *temp, int n, int is_neg)
 {
-	int	i;
+	int	start;
 
-	i = 0;
-	while (i < n)
-	{
-		dst[n - i - 1] = src[i];
-		i++;
-	}
-}
-
-static int	convert_reversed(char *temp, int k, int is_neg)
-{
-	int	len;
-
-	len = 0;
+	start = 10;
 	if (is_neg)
 	{
-		temp[len++] = '0' - (k % 10);
-		k = -(k / 10);
+		temp[start--] = '0' - (n % 10);
+		n = -(n / 10);
 	}
 	else
 	{
-		temp[len++] = k % 10 + '0';
-		k /= 10;
+		temp[start--] = n % 10 + '0';
+		n /= 10;
 	}
-	while (k)
+	while (n)
 	{
-		temp[len++] = k % 10 + '0';
-		k /= 10;
+		temp[start--] = n % 10 + '0';
+		n /= 10;
 	}
-	return (len + is_neg);
+	if (is_neg)
+		temp[start--] = '-';
+	return (start + 1);
 }
 
 char	*ft_itoa(int n)
 {
-	char	temp[10];
-	char	*result;
+	char	temp[12];
 	int		is_neg;
-	int		len;
+	int		start;
 
+	temp[11] = '\0';
 	is_neg = 0;
 	if (n < 0)
 		is_neg = 1;
-	len = convert_reversed(temp, n, is_neg);
-	result = (char *)malloc(sizeof(char) * (len + 1));
-	if (result == NULL)
-		return (NULL);
-	result[len] = '\0';
-	if (is_neg)
-	{
-		result[0] = '-';
-		copy_reversed(result + 1, temp, len - 1);
-	}
-	else
-		copy_reversed(result, temp, len);
-	return (result);
+	start = convert_to_str(temp, n, is_neg);
+	return (ft_strdup(temp + start));
 }
