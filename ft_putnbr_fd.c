@@ -6,12 +6,11 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:35:10 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 19:03:14 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/13 21:34:38 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {

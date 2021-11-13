@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 12:37:23 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/13 00:16:37 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/13 16:59:05 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	parse_string(char **array, const char *str, char c)
 	size_t		index;
 
 	index = 0;
-	while (*str == c)
+	while (c != '\0' && *str == c)
 		str++;
 	while (*str != '\0')
 	{

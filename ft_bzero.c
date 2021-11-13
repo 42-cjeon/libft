@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:12:01 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/11 11:58:02 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/13 21:11:19 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_bzero(void *s, size_t n)
 {
 	unsigned char	*str;
 
-	str = s;
+	str = (unsigned char *)s;
 	while (n--)
 		*str++ = 0;
 }
