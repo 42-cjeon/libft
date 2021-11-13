@@ -6,37 +6,46 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:35:10 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/13 21:34:38 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/14 00:22:22 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putnbr_fd(int n, int fd)
+static int	convert_to_str(char *temp, int n, int is_neg)
 {
-	char		temp[11];
-	long long	k;
-	int			is_neg;
-	int			i;
+	int	start;
 
-	k = n;
-	i = 10;
-	is_neg = 0;
-	if (k < 0)
+	start = 10;
+	if (is_neg)
 	{
-		k = -k;
-		is_neg = 1;
+		temp[start--] = '0' - (n % 10);
+		n = -(n / 10);
 	}
-	temp[i--] = k % 10 + '0';
-	k /= 10;
-	while (k)
+	else
 	{
-		temp[i--] = k % 10 + '0';
-		k /= 10;
+		temp[start--] = n % 10 + '0';
+		n /= 10;
+	}
+	while (n)
+	{
+		temp[start--] = n % 10 + '0';
+		n /= 10;
 	}
 	if (is_neg)
-		temp[i] = '-';
-	else
-		i += 1;
-	write(fd, temp + i, 11 - i);
+		temp[start--] = '-';
+	return (start + 1);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	char	temp[11];
+	int		is_neg;
+	int		start;
+
+	is_neg = 0;
+	if (n < 0)
+		is_neg = 1;
+	start = convert_to_str(temp, n, is_neg);
+	write(fd, temp + start, 11 - start);
 }
