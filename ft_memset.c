@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:06:31 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/11 14:45:20 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/13 21:31:44 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	unsigned char	*dst;
 
 	byte = (unsigned char)c;
-	dst = b;
+	dst = (unsigned char *)b;
 	while (len--)
 		*dst++ = byte;
 	return (b);

@@ -6,11 +6,10 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 19:19:09 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 19:00:38 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/13 21:33:25 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
 void	ft_putendl_fd(char *s, int fd)
