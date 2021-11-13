@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 16:08:17 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 18:48:17 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/13 16:54:12 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	del(lst->content);
+	if (lst == NULL)
+		return ;
+	if (del != NULL)
+		del(lst->content);
 	free(lst);
 }

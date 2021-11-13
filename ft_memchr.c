@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:07:10 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/11 14:38:46 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/13 16:51:30 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	const unsigned char	*str;
 	unsigned char		find_char;
 
-	str = s;
+	str = (const unsigned char *)s;
 	find_char = (unsigned char)c;
 	while (n--)
 	{

@@ -12,12 +12,21 @@ SRCS = \
 	ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
 	ft_strmapi.c ft_striteri.c \
 	ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
-OBJS = $(SRCS:.c=.o)
 BONUS_SRCS = \
 	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 	ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
 	ft_lstclear.c ft_lstiter.c ft_lstmap.c
+
+OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+
+ifdef W_BONUS
+$(NAME) : $(OBJS) $(BONUS_OBJS)
+	ar rcs $@ $^	
+else
+$(NAME) : $(OBJS)
+	ar rcs $@ $^
+endif
 
 $(OBJS) : $(SRCS)
 	$(CC) $(CFLAGS) $(SRCS)
@@ -25,13 +34,10 @@ $(OBJS) : $(SRCS)
 $(BONUS_OBJS) : $(BONUS_SRCS)
 	$(CC) $(CFLAGS) $(BONUS_SRCS)
 
-$(NAME) : $(OBJS)
-	ar rcs $@ $^
-
 all : $(NAME)
 
-bonus : $(BONUS_OBJS) $(OBJS)
-	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+bonus :
+	@make W_BONUS=1 all
 
 clean :
 	rm -f $(OBJS) $(BONUS_OBJS)

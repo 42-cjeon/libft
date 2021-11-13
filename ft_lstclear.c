@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 16:17:43 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 18:47:35 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/13 16:54:32 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,13 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	t_list	*next_node;
 
 	node = *lst;
-	if (node != NULL)
+	while (node)
 	{
-		while (node)
-		{
-			next_node = node->next;
+		next_node = node->next;
+		if (del != NULL)
 			del(node->content);
-			free(node);
-			node = next_node;
-		}
+		free(node);
+		node = next_node;
 	}
 	*lst = NULL;
 }

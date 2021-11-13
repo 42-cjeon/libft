@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 13:42:02 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/10 17:32:14 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/13 16:55:57 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ static int	ft_isspace(int c)
 int	ft_atoi(const char *str)
 {
 	int	result;
-	int	is_negtive;
+	int	is_neg;
 
 	while (ft_isspace(*str))
 		str++;
-	is_negtive = 0;
+	is_neg = 0;
 	if (*str == '-')
 	{
-		is_negtive = 1;
+		is_neg = 1;
 		str++;
 	}
 	else if (*str == '+')
@@ -40,7 +40,7 @@ int	ft_atoi(const char *str)
 		result = result * 10 - (*str - '0');
 		str++;
 	}
-	if (is_negtive)
+	if (is_neg)
 		return (result);
 	return (-result);
 }
