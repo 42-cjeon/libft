@@ -6,7 +6,7 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:06:56 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/13 21:30:33 by cjeon            ###   ########.fr       */
+/*   Updated: 2021/11/17 19:05:23 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	str2 = (const unsigned char *)s2;
 	while (n--)
 	{
-		if (*str1 > *str2)
-			return (1);
-		else if (*str1 < *str2)
-			return (-1);
+		if (*str1 != *str2)
+			return (*str1 - *str2);
 		str1++;
 		str2++;
 	}
