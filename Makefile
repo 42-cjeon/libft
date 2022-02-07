@@ -1,5 +1,8 @@
-CC = gcc
-CFLAGS = -c -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -f
+AR = ar
+ARFLAGS = -rs
 NAME = libft.a
 SRCS = \
 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
@@ -11,40 +14,26 @@ SRCS = \
 	ft_calloc.c \
 	ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
 	ft_strmapi.c ft_striteri.c \
-	ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
-BONUS_SRCS = \
+	ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 	ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
 	ft_lstclear.c ft_lstiter.c ft_lstmap.c
-
 OBJS = $(SRCS:.c=.o)
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
-ifdef W_BONUS
-$(NAME) : $(OBJS) $(BONUS_OBJS)
-	ar rcs $@ $^	
-else
 $(NAME) : $(OBJS)
-	ar rcs $@ $^
-endif
+	$(AR) $(ARFLAGS) $@ $^
 
-$(OBJS) : $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS)
-
-$(BONUS_OBJS) : $(BONUS_SRCS)
-	$(CC) $(CFLAGS) $(BONUS_SRCS)
+%.o : %.c
+	$(CC) -c $(CFLAGS) $<
 
 all : $(NAME)
 
-bonus :
-	@make W_BONUS=1 all
-
 clean :
-	rm -f $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean : clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re : fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

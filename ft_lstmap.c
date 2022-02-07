@@ -6,26 +6,26 @@
 /*   By: cjeon <cjeon@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 16:44:04 by cjeon             #+#    #+#             */
-/*   Updated: 2021/11/13 23:32:18 by cjeon            ###   ########.fr       */
+/*   Updated: 2022/02/07 13:01:26 by cjeon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static t_list	*ft_lstnew_with_func(void *content,
-					void *(*f)(void *), void (*del)(void *))
+static t_list	*ft_lstnew_with_func(t_list *lst, t_list_apply f, \
+										t_list_del del)
 {
 	void	*new_content;
 	t_list	*node;
 
-	new_content = f(content);
+	new_content = f(lst->type, lst->content);
 	if (new_content == NULL)
 		return (NULL);
-	node = ft_lstnew(new_content);
+	node = ft_lstnew(lst->type, new_content);
 	if (node == NULL)
 	{
 		if (del != NULL)
-			del(new_content);
+			del(lst->type, new_content);
 		return (NULL);
 	}
 	return (node);
@@ -40,7 +40,7 @@ static t_list	*ft_lstappend(t_list **head, t_list *tail, t_list *new)
 	return (new);
 }
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, t_list_apply f, t_list_del del)
 {
 	t_list	*new_lst_head;
 	t_list	*new_lst_tail;
@@ -52,7 +52,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	new_lst_tail = NULL;
 	while (lst)
 	{
-		node = ft_lstnew_with_func(lst->content, f, del);
+		node = ft_lstnew_with_func(lst, f, del);
 		if (node == NULL)
 		{
 			ft_lstclear(&new_lst_head, del);
